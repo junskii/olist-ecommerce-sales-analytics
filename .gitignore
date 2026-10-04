@@ -1,6 +1,10 @@
 # macOS
 .DS_Store
 
+# Tableau temporary and recovery files
+*.twbr
+.~*
+
 # Raw Olist datasets
 olist_customers_dataset.csv
 olist_geolocation_dataset.csv
@@ -13,6 +17,5 @@ olist_products_dataset.csv
 olist_sellers_dataset.csv
 product_category_name_translation.csv
 
-# Miscellaneous
-*.log.DS_Store
+# Logs
 *.log

@@ -40,10 +40,13 @@ SELECT
         o.order_purchase_timestamp
     ) AS durasi_pengiriman_hari,
     CASE
-        WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date
-            THEN 'Late'
-        ELSE 'On time'
-    END AS status_pengiriman,
+    WHEN o.order_delivered_customer_date IS NULL
+      OR o.order_estimated_delivery_date IS NULL
+        THEN 'Unknown'
+    WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date
+        THEN 'Late'
+    ELSE 'On time'
+END AS status_pengiriman,
     ROUND(rr.rata_rata_review_score, 2) AS rata_rata_review_score
 FROM olist_orders AS o
 JOIN olist_customers AS c
